@@ -167,4 +167,4 @@ Nguồn ảnh: COCO val2017 / Wikimedia Commons.
 
 - Tài liệu trong repo: `README.md`, `docs/GUIDELINE.md`, `docs/CVAT_CHEATSHEET.md`, `CHECKPOINTS.md`, `SUBMISSION.md`.
 - Dữ liệu: COCO val2017 (Lin et al., 2014) và ảnh chân dung Wikimedia Commons, chỉ dùng trong lớp.
-- Công cụ AI: Claude Code (Anthropic). Tôi dùng để hỏi cách xử lý lỗi môi trường (CVAT chậm, Nuclio, lỗi export, lệnh PowerShell), hỏi cách đặt cờ `occluded` / `outside` cho người quay lưng, đọc kết quả tự kiểm, và điền các số liệu lấy từ file export vào báo cáo. Việc gán nhãn từng điểm và quyết định giữ hay sửa các cảnh báo là do tôi tự làm.
+
