@@ -163,6 +163,50 @@ Nguồn ảnh: COCO val2017 / Wikimedia Commons.
 - **Cảnh báo trái/phải khi tự kiểm**: `check_submission.py` báo 3 cảnh báo cặp trái/phải ngược phía (xem mục 5). Tôi mở lại ảnh gốc để đối chiếu rồi mới giữ nguyên.
 
 
+## Bonus 
+
+### B1 — 3 ảnh người khó thêm
+
+| Ảnh | Số skeleton | Số người dưới 60 px | Ca khó nhất |
+|---|---:|---:|---|
+| `000000125998.jpg` | 3 | 0 | Ba người ngồi, chỉ thấy chân, tay và laptop; chân tay chồng lên nhau và nhiều điểm bị che (hông, gối, cổ chân), khó xác định trái/phải của từng người |
+| `000000337458.jpg` | 3 | 0 | Hai người đứng sát nhau ở góc dưới bên trái, một người đeo balo che người kia; thêm một người nhỏ ở góc trên bên phải |
+| `000000517702.jpg` | 3 | 0 | Hai người quay lưng đi dưới ô, ô che đầu và vai, tay vòng qua nhau; thêm một người ở phía sau chỉ thấy một phần |
+
+Kết quả `src/check_submission.py` cho `NguyenVanQuang_bonus_persons.zip`:
+
+```text
+=== src\exports\NguyenVanQuang_bonus_persons.zip (label `person`) ===
+  [CẢNH BÁO] 000000125998.jpg #2: `right_elbow` v = 2 nằm sát mép ảnh (634, 53). Nếu khớp thật ở ngoài ảnh, bật outside thay vì kéo về mép.
+
+- File person: NguyenVanQuang_bonus_persons.zip
+  Số ảnh: 3 · số skeleton `person`: 9 · mỗi annotation 51 số
+  Skeleton theo ảnh: 000000125998=3, 000000337458=3, 000000517702=3
+  Cờ v: v=2 70 (46%) · v=1 13 (8%) · v=0 70 (46%)
+  num_keypoints trung bình: 9.2
+- Số [LỖI]: 0 · số [CẢNH BÁO]: 1
+Kết quả: ĐẠT (đọc lại từng cảnh báo ở trên)
+```
+
+### B2 — 5 ảnh khuôn mặt đen trắng / hồng ngoại
+
+Cả 5 ảnh là chân dung cũ: `face_102517` và `face_274219` đen trắng, `face_45276` là ảnh phim tối, `face_296417` và `face_494518` là ảnh nâu đã ngả màu. Ảnh không màu khó hơn ở chỗ không phân biệt được lòng đen, da và môi bằng màu, nên mép mí mắt và khóe miệng chỉ nhận ra bằng độ sáng tối. Ảnh `face_45276` tối và tương phản thấp nên mí mắt lẫn vào bóng; ảnh nâu ố có nhiều hạt nhiễu nên đường viền mắt và môi nhòe. Ở `face_274219`, ria mép che hai khóe miệng, tôi đặt `mouth_left` và `mouth_right` là `v = 1` (occluded) vì vẫn đoán chắc được vị trí theo đường môi. Trong 5 ảnh của tôi không có kính râm hay ảnh hồng ngoại. `face_102517` có kính gọng đen nhưng mắt vẫn thấy rõ qua mắt kính nên mắt vẫn là `v = 2`. Nếu gặp kính râm che kín mắt, tôi sẽ đặt các điểm mắt là `v = 1` khi đoán chắc được vị trí, và `v = 0` khi không đoán được.
+
+Kết quả `src/check_submission.py` cho `NguyenVanQuang_bonus_faces.zip`:
+
+```text
+- File face: NguyenVanQuang_bonus_faces.zip
+  Số ảnh: 5 · số skeleton `face`: 5 · mỗi annotation 39 số
+  Skeleton theo ảnh: face_102517=1, face_274219=1, face_296417=1, face_45276=1, face_494518=1
+  Cờ v: v=2 63 (97%) · v=1 2 (3%) · v=0 0 (0%)
+  num_keypoints trung bình: 13.0
+- Số [LỖI]: 0 · số [CẢNH BÁO]: 0
+```
+
+### B3 — Model so với nhãn của tôi (không tính điểm)
+
+Không làm B3.
+
 ## 9. Tài liệu tham khảo và công cụ AI đã dùng
 
 - Tài liệu trong repo: `README.md`, `docs/GUIDELINE.md`, `docs/CVAT_CHEATSHEET.md`, `CHECKPOINTS.md`, `SUBMISSION.md`.

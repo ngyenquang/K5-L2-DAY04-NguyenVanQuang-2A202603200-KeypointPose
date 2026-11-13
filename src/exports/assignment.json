@@ -38,6 +38,28 @@
    "task_id": 18,
    "job_id": 18,
    "task_name": "faces-NguyenVanQuang"
+  },
+  "persons-extra": {
+   "task_id": 19,
+   "job_id": 19,
+   "task_name": "persons-extra-NguyenVanQuang"
+  },
+  "faces-extra": {
+   "task_id": 20,
+   "job_id": 20,
+   "task_name": "faces-extra-NguyenVanQuang"
   }
- }
+ },
+ "persons_extra": [
+  "000000125998.jpg",
+  "000000337458.jpg",
+  "000000517702.jpg"
+ ],
+ "faces_extra": [
+  "face_102517.jpg",
+  "face_274219.jpg",
+  "face_296417.jpg",
+  "face_45276.jpg",
+  "face_494518.jpg"
+ ]
 }
